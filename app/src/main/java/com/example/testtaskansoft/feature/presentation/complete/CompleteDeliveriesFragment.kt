@@ -7,7 +7,7 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.example.testtaskansoft.core.base.BaseFragment
 import com.example.testtaskansoft.databinding.FragmentCompleteDeliveriesBinding
-import com.example.testtaskansoft.feature.presentation.delivery.adapter.DeliveryAdapter
+import com.example.testtaskansoft.feature.presentation.adapter.DeliveryAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

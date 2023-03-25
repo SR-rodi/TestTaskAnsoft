@@ -1,4 +1,4 @@
-package com.example.testtaskansoft.feature.presentation.delivery.adapter
+package com.example.testtaskansoft.feature.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.testtaskansoft.feature.domain.model.Delivery

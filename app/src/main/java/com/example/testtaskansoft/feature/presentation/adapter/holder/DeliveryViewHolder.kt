@@ -1,13 +1,12 @@
-package com.example.testtaskansoft.feature.presentation.delivery.adapter
+package com.example.testtaskansoft.feature.presentation.adapter.holder
 
-import androidx.recyclerview.widget.RecyclerView
 import com.example.testtaskansoft.databinding.ItemDeliveryBinding
 import com.example.testtaskansoft.feature.domain.model.Delivery
 
 class DeliveryViewHolder(
     private val binding: ItemDeliveryBinding,
     private val onClickListener: (deliveryItem: Delivery) -> Unit,
-) : RecyclerView.ViewHolder(binding.root) {
+) : BaseDeliveryHolder(binding) {
 
     private var delivery: Delivery? = null
 
@@ -18,7 +17,7 @@ class DeliveryViewHolder(
         }
     }
 
-    fun bind(item: Delivery) {
+    override fun bind(item: Delivery) {
 
         delivery = item
 
@@ -27,3 +26,4 @@ class DeliveryViewHolder(
         binding.phone.text = item.phone
     }
 }
+

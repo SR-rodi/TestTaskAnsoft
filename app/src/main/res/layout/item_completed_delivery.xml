@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginTop="8dp"
+    android:elevation="6dp"
+    app:cardCornerRadius="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Text.Title.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address" />
+
+            <TextView
+                android:id="@+id/address"
+                style="@style/Text.Title.Middle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                tools:text="Дзеожинского 24" />
+
+            <TextView
+                style="@style/Text.Title.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_number" />
+
+            <TextView
+                android:id="@+id/phone"
+                style="@style/Text.Title.Middle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="+7-999-99-99" />
+
+        </LinearLayout>
+
+      <ImageView
+          android:src="@drawable/ic_check"
+          android:backgroundTint="@color/green_100"
+          android:layout_width="45dp"
+          android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

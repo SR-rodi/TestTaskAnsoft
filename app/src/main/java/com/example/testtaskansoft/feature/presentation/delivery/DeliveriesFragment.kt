@@ -6,7 +6,7 @@ import android.view.View
 import com.example.testtaskansoft.core.base.BaseFragment
 import com.example.testtaskansoft.databinding.FragmentCompleteDeliveriesBinding
 import com.example.testtaskansoft.feature.domain.model.Delivery
-import com.example.testtaskansoft.feature.presentation.delivery.adapter.DeliveryAdapter
+import com.example.testtaskansoft.feature.presentation.adapter.DeliveryAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DeliveriesFragment : BaseFragment<FragmentCompleteDeliveriesBinding>() {
