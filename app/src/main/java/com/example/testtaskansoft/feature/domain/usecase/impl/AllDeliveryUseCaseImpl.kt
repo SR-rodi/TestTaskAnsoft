@@ -11,7 +11,7 @@ class AllDeliveryUseCaseImpl(
 
     ) : AllDeliveryUseCase {
 
-    override suspend fun getAllDelivery(): List<Delivery> {
+    override suspend fun getAllDeliveryInDataBase(): List<Delivery> {
         val list = networkRepository.getAllDelivery()
         localRepository.insert(list)
         return list

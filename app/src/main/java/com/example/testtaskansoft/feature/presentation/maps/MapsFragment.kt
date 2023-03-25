@@ -20,9 +20,21 @@ class MapsFragment : BaseFragment<FragmentMapsBinding>() {
     private val viewModel by viewModel<MapsViewModel>()
 
     private val callback = OnMapReadyCallback { googleMap ->
-        val baseLocation = LatLng(55.7522, 37.6156)
-        googleMap.addMarker(MarkerOptions().position(baseLocation).title("Base Location"))
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(baseLocation, 10f))
+
+        flowListener(viewModel.completeDelivery){listDelivery->
+            if (listDelivery.isNotEmpty()) {
+                listDelivery.forEach { deliveryItem ->
+                    val baseLocation =
+                        LatLng(deliveryItem.lat.toDouble(), deliveryItem.lon.toDouble())
+                    googleMap.addMarker(
+                        MarkerOptions().position(baseLocation).title(deliveryItem.address)
+                    )
+                }
+                val baseLocation = LatLng(48.705177,44.508064)
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(baseLocation, 11f))
+            }
+        }
+
     }
 
 

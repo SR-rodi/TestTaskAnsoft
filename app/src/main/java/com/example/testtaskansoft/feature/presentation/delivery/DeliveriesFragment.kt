@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import com.example.testtaskansoft.core.base.BaseFragment
 import com.example.testtaskansoft.databinding.FragmentCompleteDeliveriesBinding
+import com.example.testtaskansoft.feature.domain.model.Delivery
 import com.example.testtaskansoft.feature.presentation.delivery.adapter.DeliveryAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -20,8 +21,6 @@ class DeliveriesFragment : BaseFragment<FragmentCompleteDeliveriesBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getDelivery()
-
         binding.recyclerView.adapter = adapter
 
         flowListener(viewModel.delivery) { delivery ->
@@ -30,8 +29,8 @@ class DeliveriesFragment : BaseFragment<FragmentCompleteDeliveriesBinding>() {
 
     }
 
-    private fun clickItemListener(position:Int){
-        viewModel.setCompletedDelivery(position)
+    private fun clickItemListener(deliveryItem: Delivery){
+        viewModel.setCompletedDelivery(deliveryItem)
     }
 
 }

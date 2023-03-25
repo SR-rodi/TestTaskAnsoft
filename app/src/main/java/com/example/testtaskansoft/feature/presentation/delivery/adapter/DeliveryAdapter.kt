@@ -7,7 +7,7 @@ import com.example.testtaskansoft.databinding.ItemDeliveryBinding
 import com.example.testtaskansoft.feature.domain.model.Delivery
 
 class DeliveryAdapter(
-    private val onClickListener: (position: Int) -> Unit,
+    private val onClickListener: (deliveryItem: Delivery) -> Unit,
 ) : ListAdapter<Delivery, DeliveryViewHolder>(DeliveryDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DeliveryViewHolder(
         ItemDeliveryBinding.inflate(LayoutInflater.from(parent.context), parent, false),

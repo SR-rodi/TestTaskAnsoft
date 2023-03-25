@@ -9,8 +9,8 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
 
-    /*  viewModelOf(::CompleteDeliveriesViewModel)*/
-    viewModel { (CompleteDeliveriesViewModel(get())) }
+      viewModelOf(::CompleteDeliveriesViewModel)
+   // viewModel { (CompleteDeliveriesViewModel(get())) }
     viewModelOf(::MapsViewModel)
     viewModelOf(::DeliveriesViewModel)
 }

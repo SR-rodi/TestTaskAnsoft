@@ -5,34 +5,31 @@ import com.example.testtaskansoft.core.provider.DispatcherIoProvider
 import com.example.testtaskansoft.feature.domain.model.Delivery
 import com.example.testtaskansoft.feature.domain.usecase.AllDeliveryUseCase
 import com.example.testtaskansoft.feature.domain.usecase.CompleteDeliveryUseCase
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import com.example.testtaskansoft.feature.domain.usecase.DataBaseClearDeliveryUseCase
+import com.example.testtaskansoft.feature.domain.usecase.DataBaseGetDeliveryUseCase
 
 class DeliveriesViewModel(
     private val allDeliveryUseCase: AllDeliveryUseCase,
     private val completeDeliveryUseCase: CompleteDeliveryUseCase,
     private val dispatcher: DispatcherIoProvider,
+    private val clearDataBaseClearDeliveryUseCase: DataBaseClearDeliveryUseCase,
+    dataBaseGetDeliveryUseCase: DataBaseGetDeliveryUseCase,
 ) : BaseViewModel() {
 
     init {
         getDelivery()
     }
 
-    protected val _delivery = MutableStateFlow(listOf<Delivery>())
-    val delivery = _delivery.asStateFlow()
-
+    val delivery = dataBaseGetDeliveryUseCase.getDeliveryByCompleted(false)
 
     fun getDelivery() = workInViewModelScope(dispatcher.io) {
-        _delivery.value = allDeliveryUseCase.getAllDelivery()
+        clearDataBaseClearDeliveryUseCase.clearDatabase() // чистим базу каждый запуск
+        allDeliveryUseCase.getAllDeliveryInDataBase()
     }
 
-    fun setCompletedDelivery(position: Int) =
+    fun setCompletedDelivery(deliveryItem: Delivery) =
         workInViewModelScope(dispatcher.io) {
-            val listDelivery = delivery.value.toMutableList()
-            val deliveryItem = listDelivery[position]
-            //completeDeliveryUseCase.completeDelivery(deliveryItem.toBody())
-            listDelivery.removeAt(position)
-            _delivery.value = listDelivery
+            completeDeliveryUseCase.completeDelivery(deliveryItem.copy(isCompleted = true))
         }
 
 }

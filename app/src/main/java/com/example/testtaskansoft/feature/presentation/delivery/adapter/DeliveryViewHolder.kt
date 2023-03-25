@@ -6,14 +6,15 @@ import com.example.testtaskansoft.feature.domain.model.Delivery
 
 class DeliveryViewHolder(
     private val binding: ItemDeliveryBinding,
-    private val onClickListener: (id: Int) -> Unit,
+    private val onClickListener: (deliveryItem: Delivery) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     private var delivery: Delivery? = null
 
     init {
         binding.deliveryButton.setOnClickListener {
-            onClickListener(adapterPosition)
+            if (delivery != null)
+                onClickListener(delivery!!)
         }
     }
 

@@ -20,7 +20,5 @@ val dataBaseModule = module {
         get<DeliveryDatabase>().deliveryDao()
     }
 
-    //singleOf(::LocalDeliveryRepositoryImpl){bind<LocalDeliveryRepository>()}
-
     single<LocalDeliveryRepository> { LocalDeliveryRepositoryImpl(get()) }
 }

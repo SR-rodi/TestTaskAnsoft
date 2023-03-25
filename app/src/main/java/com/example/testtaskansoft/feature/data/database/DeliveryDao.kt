@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface DeliveryDao {
 
-    @Query("SELECT*FROM delivery")
-    fun getAll(): Flow<DeliveryEntity>
+    @Query("SELECT * FROM delivery WHERE is_completed = :isCompleted")
+    fun getDeliveryByCompleted(isCompleted: Boolean ): Flow<List<DeliveryEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(list: List<DeliveryEntity>)
