@@ -4,7 +4,7 @@ import com.example.testtaskansoft.feature.domain.model.Delivery
 import com.google.gson.annotations.SerializedName
 
 class DeliveryDto(
-    private val id: Int,
+    val id: Int,
     private val lat: String,
     private val lon: String,
     private val phone: String,

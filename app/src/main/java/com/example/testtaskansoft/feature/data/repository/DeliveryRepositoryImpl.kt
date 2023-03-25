@@ -7,7 +7,8 @@ import com.example.testtaskansoft.feature.domain.repository.DeliveryRepository
 
 class DeliveryRepositoryImpl(private val api: DeliveryApi) : DeliveryRepository {
 
-    override suspend fun getAllDelivery() = api.getAllDelivery().map { dto -> dto.toDelivery() }
+    override suspend fun getAllDelivery() =
+        api.getAllDelivery().associate { dto -> dto.id to dto.toDelivery() }
 
     override suspend fun completeDelivery(body: BodyComplete) {
         api.completeDelivery(body)

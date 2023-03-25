@@ -6,5 +6,6 @@ data class Delivery(
     val lat: String,
     val lon: String,
     val phone: String,
-    val planTime: String
+    val planTime: String,
+    var isCompleted: Boolean = false,
 )

@@ -17,7 +17,5 @@ class CompleteDeliveriesFragment : BaseFragment<FragmentCompleteDeliveriesBindin
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel
-        // viewModel.getDelivery()
     }
 }
