@@ -1,6 +1,5 @@
 package com.example.testtaskansoft.feature.presentation.delivery
 
-import androidx.lifecycle.SavedStateHandle
 import com.example.testtaskansoft.core.base.BaseViewModel
 import com.example.testtaskansoft.core.provider.DispatcherIoProvider
 import com.example.testtaskansoft.feature.domain.model.Delivery
@@ -13,32 +12,27 @@ class DeliveriesViewModel(
     private val allDeliveryUseCase: AllDeliveryUseCase,
     private val completeDeliveryUseCase: CompleteDeliveryUseCase,
     private val dispatcher: DispatcherIoProvider,
-    private val savedStateHandle: SavedStateHandle,
 ) : BaseViewModel() {
 
     init {
         getDelivery()
     }
 
-    protected val _delivery = MutableStateFlow(mapOf<Int, Delivery>())
+    protected val _delivery = MutableStateFlow(listOf<Delivery>())
     val delivery = _delivery.asStateFlow()
 
 
     fun getDelivery() = workInViewModelScope(dispatcher.io) {
         _delivery.value = allDeliveryUseCase.getAllDelivery()
-        savedStateHandle[DELIVERY] = _delivery.value
     }
 
-    fun setCompletedDelivery(id: Int, lat: String, lon: String) =
+    fun setCompletedDelivery(position: Int) =
         workInViewModelScope(dispatcher.io) {
-            completeDeliveryUseCase.completeDelivery(id, lat, lon)
-            val oldList: MutableMap<Int, Delivery?> = _delivery.value.toMutableMap()
-            oldList[id] = _delivery.value[id]
-            savedStateHandle[DELIVERY] = oldList
+            val listDelivery = delivery.value.toMutableList()
+            val deliveryItem = listDelivery[position]
+            //completeDeliveryUseCase.completeDelivery(deliveryItem.toBody())
+            listDelivery.removeAt(position)
+            _delivery.value = listDelivery
         }
-
-    companion object {
-        const val DELIVERY = "Delivery"
-    }
 
 }

@@ -15,7 +15,7 @@ class DeliveriesFragment : BaseFragment<FragmentCompleteDeliveriesBinding>() {
 
     private val viewModel by viewModel<DeliveriesViewModel>()
 
-    private val adapter by lazy { DeliveryAdapter() }
+    private val adapter by lazy { DeliveryAdapter(::clickItemListener) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,10 +24,14 @@ class DeliveriesFragment : BaseFragment<FragmentCompleteDeliveriesBinding>() {
 
         binding.recyclerView.adapter = adapter
 
-        flowListener(viewModel.delivery) { mapDelivery ->
-            adapter.submitList(mapDelivery.values.toList())
+        flowListener(viewModel.delivery) { delivery ->
+            adapter.submitList(delivery)
         }
 
+    }
+
+    private fun clickItemListener(position:Int){
+        viewModel.setCompletedDelivery(position)
     }
 
 }

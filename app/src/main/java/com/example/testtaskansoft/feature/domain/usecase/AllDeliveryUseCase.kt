@@ -4,6 +4,6 @@ import com.example.testtaskansoft.feature.domain.model.Delivery
 
 interface AllDeliveryUseCase {
 
-    suspend fun getAllDelivery():Map<Int,Delivery>
+    suspend fun getAllDelivery():List<Delivery>
 
 }

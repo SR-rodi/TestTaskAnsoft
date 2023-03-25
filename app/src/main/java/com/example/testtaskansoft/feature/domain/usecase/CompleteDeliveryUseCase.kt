@@ -1,6 +1,8 @@
 package com.example.testtaskansoft.feature.domain.usecase
 
+import com.example.testtaskansoft.feature.domain.model.Delivery
+
 interface CompleteDeliveryUseCase {
 
-    suspend fun completeDelivery(id: Int, lat: String, lon: String)
+    suspend fun completeDelivery(deliveryItem: Delivery)
 }

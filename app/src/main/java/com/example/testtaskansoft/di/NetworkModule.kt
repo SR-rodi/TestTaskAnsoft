@@ -1,8 +1,8 @@
 package com.example.testtaskansoft.di
 
 import com.example.testtaskansoft.feature.data.api.DeliveryApi
-import com.example.testtaskansoft.feature.data.repository.DeliveryRepositoryImpl
-import com.example.testtaskansoft.feature.domain.repository.DeliveryRepository
+import com.example.testtaskansoft.feature.data.repository.NetworkDeliveryRepositoryImpl
+import com.example.testtaskansoft.feature.domain.repository.NetworkDeliveryRepository
 import com.example.testtaskansoft.feature.domain.usecase.AllDeliveryUseCase
 import com.example.testtaskansoft.feature.domain.usecase.CompleteDeliveryUseCase
 import com.example.testtaskansoft.feature.domain.usecase.impl.AllDeliveryUseCaseImpl
@@ -30,12 +30,7 @@ val networkModule = module {
 
 val repositoryModule = module {
 
-    singleOf(::DeliveryRepositoryImpl) { bind<DeliveryRepository>() }
+    singleOf(::NetworkDeliveryRepositoryImpl) { bind<NetworkDeliveryRepository>() }
 
 }
 
-val useCaseModule = module {
-
-    singleOf(::AllDeliveryUseCaseImpl) { bind<AllDeliveryUseCase>() }
-    singleOf(::CompleteDeliveryUseCaseImpl) { bind<CompleteDeliveryUseCase>() }
-}
