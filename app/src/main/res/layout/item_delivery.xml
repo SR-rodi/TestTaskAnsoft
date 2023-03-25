@@ -75,14 +75,33 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/delivery_button"
-        style="@style/Text.Title.Button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:clickable="true"
-        android:text="Доставить" />
+        android:layout_gravity="end|bottom">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom|end"
+            android:paddingTop="25dp"
+            android:visibility="gone"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loader" />
+
+        <TextView
+            android:id="@+id/delivery_button"
+            style="@style/Text.Title.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:clickable="true"
+            android:text="Доставить" />
+
+
+    </LinearLayout>
 
 
 </androidx.cardview.widget.CardView>

@@ -3,4 +3,6 @@
     <string name="address">Адрес:</string>
     <string name="phone_number">Номер телефона:</string>
     <string name="date_delivery">Дата доставки:</string>
+    <string name="placeholder_delivery">Тут будут отображаться Ваши доставки</string>
+    <string name="placeholder_compete_delivery">Тут будут отображаться выполненые доставки</string>
 </resources>

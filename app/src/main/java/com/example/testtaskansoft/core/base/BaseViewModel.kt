@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.testtaskansoft.feature.data.state.LoadState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -25,6 +26,7 @@ abstract class BaseViewModel : ViewModel() {
         viewModelScope.launch(dispatcher + handler) {
             _loadState.value = LoadState.LOADING
             block()
+            delay(500) // так как данные грузяться с базы данных прячим за лоодером удаление старых итемов
             _loadState.value = LoadState.SUCCESS
         }
     }

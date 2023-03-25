@@ -26,9 +26,9 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         return binding.root
     }
 
-    protected fun <I : Any?> flowListener(flow: Flow<I>, block: suspend (it: I) -> Unit) {
+    protected fun <I : Any?> flowListener(flow: Flow<I>?, block: suspend (it: I) -> Unit) {
         viewLifecycleOwner.lifecycleScope.launch {
-            flow.collect {
+            flow?.collect {
                 block(it)
             }
         }

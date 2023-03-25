@@ -4,16 +4,19 @@
 
     <item
         android:id="@id/deliveriesFragment"
-        android:title="Delivery"
+        android:icon="@drawable/ic_truck"
+        android:title="Доставка"
         />
 
     <item
         android:id="@id/completeDeliveriesFragment"
-        android:title="CompleteDelivery"
+        android:icon="@drawable/ic_box_1"
+        android:title="Выполненые"
         />
 
     <item
         android:id="@id/mapsFragment"
-        android:title="Map"
+        android:icon="@drawable/ic_map"
+        android:title="Карта"
         />
 </menu>

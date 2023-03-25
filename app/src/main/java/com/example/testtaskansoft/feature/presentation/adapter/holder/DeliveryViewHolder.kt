@@ -1,5 +1,6 @@
 package com.example.testtaskansoft.feature.presentation.adapter.holder
 
+import androidx.core.view.isVisible
 import com.example.testtaskansoft.databinding.ItemDeliveryBinding
 import com.example.testtaskansoft.feature.domain.model.Delivery
 
@@ -12,8 +13,10 @@ class DeliveryViewHolder(
 
     init {
         binding.deliveryButton.setOnClickListener {
-            if (delivery != null)
+            if (delivery != null) {
                 onClickListener(delivery!!)
+                binding.loading.isVisible = true
+            }
         }
     }
 

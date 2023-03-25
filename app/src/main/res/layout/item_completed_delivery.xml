@@ -53,9 +53,9 @@
 
       <ImageView
           android:src="@drawable/ic_check"
-          android:backgroundTint="@color/green_100"
           android:layout_width="45dp"
-          android:layout_height="match_parent"/>
+          android:layout_height="match_parent"
+          app:tint="@color/green_100" />
 
     </LinearLayout>
 
