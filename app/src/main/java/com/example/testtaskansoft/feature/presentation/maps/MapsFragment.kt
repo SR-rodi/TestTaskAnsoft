@@ -1,12 +1,20 @@
 package com.example.testtaskansoft.feature.presentation.maps
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import com.example.testtaskansoft.R
 import com.example.testtaskansoft.core.base.BaseFragment
+import com.example.testtaskansoft.core.checkPermissions
+import com.example.testtaskansoft.core.createLauncher
 import com.example.testtaskansoft.databinding.FragmentMapsBinding
 import com.example.testtaskansoft.feature.domain.model.Delivery
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -21,32 +29,38 @@ class MapsFragment : BaseFragment<FragmentMapsBinding>() {
 
     private val viewModel by viewModel<MapsViewModel>()
 
-    private val callback by lazy { creteOnMapReadyCallback() }
+    private lateinit var fusedClient: FusedLocationProviderClient
+
+    private val launcher = createLauncher { viewModel.addMyLocation() }
+
+    override fun onStart() {
+        super.onStart()
+        checkPermissions(launcher) {
+            viewModel.addMyLocation()
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.addMarker()
+
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
-    }
+        mapFragment?.getMapAsync(viewModel.callback)
 
-    private fun drawMarkerToMap(googleMap: GoogleMap, list: List<Delivery>) =
-        list.forEach { deliveryItem ->
-            val baseLocation =
-                LatLng(deliveryItem.lat.toDouble(), deliveryItem.lon.toDouble())
-            googleMap.addMarker(
-                MarkerOptions().position(baseLocation).title(deliveryItem.address)
-            )
-        }
-
-    private fun creteOnMapReadyCallback() = OnMapReadyCallback { googleMap ->
-        flowListener(viewModel.completeDelivery) { listDelivery ->
-            if (listDelivery.isNotEmpty()) {
-                drawMarkerToMap(googleMap, listDelivery)
-                val baseLocation = LatLng(48.705177, 44.508064)
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(baseLocation, 11f))
+        mapFragment?.getMapAsync { map ->
+            map.uiSettings.apply {
+                isMyLocationButtonEnabled = true
+                isZoomControlsEnabled = true
             }
         }
+
+        viewModel.setClient(LocationServices.getFusedLocationProviderClient(requireContext()))
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.removeLocation()
     }
 
 }
