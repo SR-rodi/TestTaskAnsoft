@@ -11,6 +11,9 @@ class LocalDeliveryRepositoryImpl(private val dao: DeliveryDao) : LocalDeliveryR
     override fun getDeliveryByCompleted(isCompleted: Boolean): Flow<List<Delivery>> =
         dao.getDeliveryByCompleted(isCompleted).map { delivery -> delivery.map { it.toDelivery() } }
 
+    override fun getAllDelivery(): Flow<List<Delivery>>  =
+        dao.getAllDelivery().map { delivery -> delivery.map { it.toDelivery() } }
+
     override suspend fun completeDelivery(delivery: Delivery) {
         dao.update(delivery.toEntity())
     }

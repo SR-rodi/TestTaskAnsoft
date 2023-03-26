@@ -4,21 +4,23 @@ import android.annotation.SuppressLint
 import android.os.Looper
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.testtaskansoft.feature.domain.usecase.DataBaseGetDeliveryUseCase
+import com.example.testtaskansoft.feature.domain.usecase.DataBaseAllDeliveryUseCase
+import com.example.testtaskansoft.R
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.launch
 
 @SuppressLint("MissingPermission")
-class MapsViewModel(deliveryUseCase: DataBaseGetDeliveryUseCase) : ViewModel() {
+class MapsViewModel(deliveryUseCase: DataBaseAllDeliveryUseCase) : ViewModel() {
 
     private lateinit var fusedClient: FusedLocationProviderClient
 
-    val completeDelivery = deliveryUseCase.getDeliveryByCompleted(false)
+    val completeDelivery = deliveryUseCase.getAllDelivery()
 
     private var googleMap: GoogleMap? = null
     private var needAddMarkerLocation = true
@@ -50,12 +52,16 @@ class MapsViewModel(deliveryUseCase: DataBaseGetDeliveryUseCase) : ViewModel() {
             googleMap?.isMyLocationEnabled = true
             completeDelivery.collect { listDelivery ->
                 listDelivery.forEach { deliveryItem ->
-
+                    val iconHUE = if (deliveryItem.isCompleted)
+                        BitmapDescriptorFactory.HUE_GREEN
+                    else
+                        BitmapDescriptorFactory.HUE_RED
                     val baseLocation =
                         LatLng(deliveryItem.lat.toDouble(), deliveryItem.lon.toDouble())
                     googleMap?.addMarker(
                         MarkerOptions()
                             .position(baseLocation)
+                            .icon(BitmapDescriptorFactory.defaultMarker(iconHUE))
                             .title(deliveryItem.address)
                     )
                 }

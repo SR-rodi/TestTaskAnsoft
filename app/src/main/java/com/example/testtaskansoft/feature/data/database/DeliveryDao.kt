@@ -9,6 +9,9 @@ interface DeliveryDao {
     @Query("SELECT * FROM delivery WHERE is_completed = :isCompleted")
     fun getDeliveryByCompleted(isCompleted: Boolean): Flow<List<DeliveryEntity>>
 
+    @Query("SELECT * FROM delivery")
+    fun getAllDelivery(): Flow<List<DeliveryEntity>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(list: List<DeliveryEntity>)
 

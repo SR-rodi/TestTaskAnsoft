@@ -7,6 +7,8 @@ interface LocalDeliveryRepository {
 
     fun getDeliveryByCompleted(isCompleted: Boolean): Flow<List<Delivery>>
 
+    fun getAllDelivery(): Flow<List<Delivery>>
+
     suspend fun completeDelivery(delivery: Delivery)
 
     suspend fun clearLocalBd()
