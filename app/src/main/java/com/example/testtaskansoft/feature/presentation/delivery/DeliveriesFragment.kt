@@ -31,8 +31,9 @@ class DeliveriesFragment : BaseFragment<FragmentCompleteDeliveriesBinding>() {
         binding.textPlaceholder.text = resources.getText(R.string.placeholder_delivery)
 
         binding.recyclerView.itemAnimator = Animators()
-
-        flowListener(viewModel.delivery) { delivery -> adapter.submitList(delivery) }
+        flowListener(viewModel.delivery) { delivery ->
+            binding.recyclerView.postDelayed({ adapter.submitList(delivery) }, 300)
+        }
 
         flowListener(viewModel.loadState) { state -> loadStateListener(state) }
 
