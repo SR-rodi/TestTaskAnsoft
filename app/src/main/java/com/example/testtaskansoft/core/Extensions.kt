@@ -11,7 +11,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.testtaskansoft.R
 
-
 fun Fragment.createLauncher(block: () -> Unit) =
     registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { map ->
         if (map.values.isNotEmpty() && map.values.all { it })

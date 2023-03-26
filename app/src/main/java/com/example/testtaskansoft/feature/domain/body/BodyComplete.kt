@@ -1,5 +1,3 @@
 package com.example.testtaskansoft.feature.domain.body
 
-class BodyComplete(
-    val id: Int
-)
+class BodyComplete(val id: Int)

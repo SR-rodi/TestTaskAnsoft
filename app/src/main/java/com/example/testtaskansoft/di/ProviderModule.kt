@@ -8,5 +8,5 @@ import org.koin.dsl.module
 
 val providerModule = module {
 
-    singleOf(::DispatcherIoProviderImpl){bind<DispatcherIoProvider>()}
+    singleOf(::DispatcherIoProviderImpl) { bind<DispatcherIoProvider>() }
 }

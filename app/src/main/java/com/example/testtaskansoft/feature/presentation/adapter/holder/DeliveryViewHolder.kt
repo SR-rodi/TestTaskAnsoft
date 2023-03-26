@@ -1,5 +1,7 @@
 package com.example.testtaskansoft.feature.presentation.adapter.holder
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.example.testtaskansoft.databinding.ItemDeliveryBinding
 import com.example.testtaskansoft.feature.domain.model.Delivery
@@ -28,5 +30,13 @@ class DeliveryViewHolder(
         binding.planTime.text = item.planTime
         binding.phone.text = item.phone
     }
-}
 
+    companion object {
+        fun create(parent: ViewGroup, onClickListener: (deliveryItem: Delivery) -> Unit) =
+            DeliveryViewHolder(
+                ItemDeliveryBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                ), onClickListener
+            )
+    }
+}

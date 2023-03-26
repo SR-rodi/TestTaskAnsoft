@@ -8,5 +8,4 @@ interface NetworkDeliveryRepository {
     suspend fun getAllDelivery(): List<Delivery>
 
     suspend fun completeDelivery(body: BodyComplete)
-
 }

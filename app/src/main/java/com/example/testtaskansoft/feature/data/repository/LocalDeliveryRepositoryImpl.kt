@@ -19,7 +19,5 @@ class LocalDeliveryRepositoryImpl(private val dao: DeliveryDao) : LocalDeliveryR
         dao.clear()
     }
 
-    override suspend fun insert(list: List<Delivery>)= dao.insert(list.map { it.toEntity() })
-
-
+    override suspend fun insert(list: List<Delivery>) = dao.insert(list.map { it.toEntity() })
 }

@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface DataBaseGetDeliveryUseCase {
 
-   fun getDeliveryByCompleted(isCompleted:Boolean): Flow<List<Delivery>>
+    fun getDeliveryByCompleted(isCompleted: Boolean): Flow<List<Delivery>>
 }

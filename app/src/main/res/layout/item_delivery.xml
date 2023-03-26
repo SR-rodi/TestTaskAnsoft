@@ -98,7 +98,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:clickable="true"
-            android:text="Доставить" />
+            android:text="Доставить"
+            tools:ignore="TouchTargetSizeCheck" />
 
 
     </LinearLayout>

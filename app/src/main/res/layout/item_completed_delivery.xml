@@ -26,7 +26,8 @@
                 style="@style/Text.Title.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/address" />
+                android:text="@string/address"
+                android:textColor="#78909C" />
 
             <TextView
                 android:id="@+id/address"
@@ -40,7 +41,8 @@
                 style="@style/Text.Title.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/phone_number" />
+                android:text="@string/phone_number"
+                android:textColor="#78909C" />
 
             <TextView
                 android:id="@+id/phone"
@@ -51,11 +53,12 @@
 
         </LinearLayout>
 
-      <ImageView
-          android:src="@drawable/ic_check"
-          android:layout_width="45dp"
-          android:layout_height="match_parent"
-          app:tint="@color/green_100" />
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_check"
+            app:tint="@color/green_100"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
     </LinearLayout>
 

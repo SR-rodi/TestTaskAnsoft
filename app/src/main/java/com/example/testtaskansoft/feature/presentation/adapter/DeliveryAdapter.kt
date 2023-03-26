@@ -1,11 +1,8 @@
 package com.example.testtaskansoft.feature.presentation.adapter
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.testtaskansoft.R
-import com.example.testtaskansoft.databinding.ItemCompletedDeliveryBinding
-import com.example.testtaskansoft.databinding.ItemDeliveryBinding
 import com.example.testtaskansoft.feature.domain.model.Delivery
 import com.example.testtaskansoft.feature.presentation.adapter.holder.BaseDeliveryHolder
 import com.example.testtaskansoft.feature.presentation.adapter.holder.DeliveryCompletedViewHolder
@@ -21,17 +18,9 @@ class DeliveryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseDeliveryHolder {
         return when (viewType) {
-            DELIVERY_ID -> DeliveryViewHolder(
-                ItemDeliveryBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false
-                ), onClickListener
-            )
-            COMPLETE_DELIVERY_ID -> DeliveryCompletedViewHolder(
-                ItemCompletedDeliveryBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false
-                )
-            )
-            else->throw ExceptionInInitializerError("Error create ViewHolder. No ViewType")
+            DELIVERY_ID -> DeliveryViewHolder.create(parent, onClickListener)
+            COMPLETE_DELIVERY_ID -> DeliveryCompletedViewHolder.create(parent)
+            else -> throw ExceptionInInitializerError("Error create ViewHolder. No ViewType")
         }
     }
 
@@ -44,4 +33,3 @@ class DeliveryAdapter(
         private const val COMPLETE_DELIVERY_ID = R.layout.item_completed_delivery
     }
 }
-

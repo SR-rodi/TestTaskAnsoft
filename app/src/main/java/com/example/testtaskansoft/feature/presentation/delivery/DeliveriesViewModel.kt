@@ -36,5 +36,4 @@ class DeliveriesViewModel(
             completeDeliveryUseCase.completeDelivery(deliveryItem.copy(isCompleted = true))
             delivery.collect { list -> if (list.isEmpty()) _loadState.value = LoadState.EMPTY }
         }
-
 }

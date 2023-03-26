@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
         DeliveryEntity::class
     ], version = 1
 )
-abstract class DeliveryDatabase:RoomDatabase() {
+abstract class DeliveryDatabase : RoomDatabase() {
 
-    abstract fun deliveryDao():DeliveryDao
+    abstract fun deliveryDao(): DeliveryDao
 }

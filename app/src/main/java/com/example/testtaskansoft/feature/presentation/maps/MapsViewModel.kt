@@ -4,24 +4,21 @@ import android.annotation.SuppressLint
 import android.os.Looper
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.testtaskansoft.di.viewModelModule
-import com.example.testtaskansoft.feature.domain.model.Delivery
-import com.example.testtaskansoft.feature.domain.repository.LocalDeliveryRepository
+import com.example.testtaskansoft.feature.domain.usecase.DataBaseGetDeliveryUseCase
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @SuppressLint("MissingPermission")
-class MapsViewModel(repository: LocalDeliveryRepository) : ViewModel() {
+class MapsViewModel(deliveryUseCase: DataBaseGetDeliveryUseCase) : ViewModel() {
 
     private lateinit var fusedClient: FusedLocationProviderClient
 
-    val completeDelivery = repository.getDeliveryByCompleted(false)
+    val completeDelivery = deliveryUseCase.getDeliveryByCompleted(false)
 
     private var googleMap: GoogleMap? = null
     private var needAddMarkerLocation = true
@@ -53,10 +50,13 @@ class MapsViewModel(repository: LocalDeliveryRepository) : ViewModel() {
             googleMap?.isMyLocationEnabled = true
             completeDelivery.collect { listDelivery ->
                 listDelivery.forEach { deliveryItem ->
+
                     val baseLocation =
                         LatLng(deliveryItem.lat.toDouble(), deliveryItem.lon.toDouble())
                     googleMap?.addMarker(
-                        MarkerOptions().position(baseLocation).title(deliveryItem.address)
+                        MarkerOptions()
+                            .position(baseLocation)
+                            .title(deliveryItem.address)
                     )
                 }
             }
@@ -79,5 +79,4 @@ class MapsViewModel(repository: LocalDeliveryRepository) : ViewModel() {
     fun setClient(client: FusedLocationProviderClient) {
         fusedClient = client
     }
-
 }

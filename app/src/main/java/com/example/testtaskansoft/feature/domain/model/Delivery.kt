@@ -15,5 +15,4 @@ data class Delivery(
     fun toEntity() = DeliveryEntity(id, address, lat, lon, phone, planTime, isCompleted)
 
     fun toBody() = BodyComplete(id)
-
 }

@@ -1,4 +1,4 @@
-package com.example.testtaskansoft.feature.presentation.delivery
+package com.example.testtaskansoft.feature.presentation.adapter
 
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
@@ -11,5 +11,4 @@ class Animators : DefaultItemAnimator() {
         holder?.itemView?.animate()?.alpha(0.0f)
         return true
     }
-
 }

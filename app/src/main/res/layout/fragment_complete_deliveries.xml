@@ -17,6 +17,7 @@
         android:id="@+id/placeholder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:orientation="vertical">
 
 
@@ -25,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:src="@drawable/ic_box" />
+            android:src="@drawable/ic_box"
+            android:contentDescription="@string/plug" />
 
         <TextView
             android:id="@+id/text_placeholder"

@@ -1,10 +1,10 @@
 package com.example.testtaskansoft.feature.presentation.complete
 
 import androidx.lifecycle.ViewModel
-import com.example.testtaskansoft.feature.domain.repository.LocalDeliveryRepository
+import com.example.testtaskansoft.feature.domain.usecase.DataBaseGetDeliveryUseCase
 
-class CompleteDeliveriesViewModel (private val repository: LocalDeliveryRepository): ViewModel() {
+class CompleteDeliveriesViewModel(deliveryUSeCase: DataBaseGetDeliveryUseCase) : ViewModel() {
 
-  val completeDelivery =  repository.getDeliveryByCompleted(true)
+    val completeDelivery = deliveryUSeCase.getDeliveryByCompleted(true)
 
 }

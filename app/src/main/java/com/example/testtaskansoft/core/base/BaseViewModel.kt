@@ -18,7 +18,6 @@ abstract class BaseViewModel : ViewModel() {
 
     protected val handler = CoroutineExceptionHandler { _, throwable ->
         Log.e("Kart", "Coroutine Error =  ${throwable.message}")
-
         _loadState.value = LoadState.ERROR
     }
 

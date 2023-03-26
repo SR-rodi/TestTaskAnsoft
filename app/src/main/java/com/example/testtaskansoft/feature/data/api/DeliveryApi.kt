@@ -15,7 +15,7 @@ interface DeliveryApi {
     suspend fun getAllDelivery(): DeliveryListDto
 
     @POST(SET_DELIVERY)
-    suspend fun completeDelivery(@Body bodyComplete: BodyComplete):Response<ResponseBody>
+    suspend fun completeDelivery(@Body bodyComplete: BodyComplete): Response<ResponseBody>
 
     private companion object {
         const val SET_DELIVERY = "set_delivery.php"

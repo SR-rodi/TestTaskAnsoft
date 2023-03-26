@@ -1,8 +1,12 @@
 <resources>
-    <string name="app_name">TestTaskAnsoft</string>
+    <string name="app_name">DeliveryAnsoft</string>
     <string name="address">Адрес:</string>
     <string name="phone_number">Номер телефона:</string>
     <string name="date_delivery">Дата доставки:</string>
     <string name="placeholder_delivery">Тут будут отображаться Ваши доставки</string>
     <string name="placeholder_compete_delivery">Тут будут отображаться выполненые доставки</string>
+    <string name="error">Что то пошло не так</string>
+    <string name="error_sub_title">Проверьте состояние сети и обновите страницу</string>
+    <string name="update">Обновить</string>
+    <string name="plug">plug</string>
 </resources>
