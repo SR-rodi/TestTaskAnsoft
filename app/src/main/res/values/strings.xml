@@ -9,4 +9,5 @@
     <string name="error_sub_title">Проверьте состояние сети и обновите страницу</string>
     <string name="update">Обновить</string>
     <string name="plug">plug</string>
+    <string name="error_gps">Неожиданные проблемы, Проверьте включена ли геолокация</string>
 </resources>
