@@ -5,7 +5,6 @@ import android.os.Looper
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.testtaskansoft.feature.domain.usecase.DataBaseAllDeliveryUseCase
-import com.example.testtaskansoft.R
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
